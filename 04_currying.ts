@@ -1,6 +1,23 @@
-var addFourNumbers = (a, b, c, d) => a + b + c + d;
+import * as R from "ramda";
 
-var curriedAddFourNumbers = R.curry(addFourNumbers);
-var f = curriedAddFourNumbers(1, 2);
-var g = f(3);
-g(4);
+() => {
+    // Normal
+    const updateBankBalance = (currentBalance: number, salary: number, fees: number): number => currentBalance + salary - fees;
+
+    const updatedBalance: number = updateBankBalance(500, 200, 2);
+
+    // Curried
+    const curriedCalculator = R.curry(updateBankBalance);
+    
+    // Get balance...
+    
+    const withBalance = curriedCalculator(500);
+    
+    // Get salary...
+    
+    const withSalary = withBalance(200);
+
+    // Get fees...
+
+    const withFees: number = withSalary(2);
+};
