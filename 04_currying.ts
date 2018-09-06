@@ -1,23 +1,31 @@
 import * as R from "ramda";
 
 () => {
+    ///////////////////////////////////////////////////////////////
     // Normal
+    ///////////////////////////////////////////////////////////////
+    
     const updateBankBalance = (currentBalance: number, salary: number, fees: number): number => currentBalance + salary - fees;
 
-    const updatedBalance: number = updateBankBalance(500, 200, 2);
+    updateBankBalance(500, 200, 2);
 
-    // Curried
-    const curriedCalculator = R.curry(updateBankBalance);
-    
-    // Get balance...
-    
-    const withBalance = curriedCalculator(500);
-    
-    // Get salary...
-    
-    const withSalary = withBalance(200);
+    ///////////////////////////////////////////////////////////////
+    // Currying - breaks function with multiple arguments into a sequence of functions - 1 per argument
+    // Allows you to manage how arguments are passed to functions
+    // Arguments can be given at different points, functions can be passed around
+    ///////////////////////////////////////////////////////////////
 
-    // Get fees...
+    const updateBankBalanceCurried = R.curry(updateBankBalance);
+    
+    // Calculate current bank balance
+    
+    const withBankBalance = updateBankBalanceCurried(500);
+    
+    // Calculate salary
 
-    const withFees: number = withSalary(2);
+    const withBankBalanceAndSalary = withBankBalance(200);
+
+    // Calculate fees
+
+    withBankBalanceAndSalary(2);
 };

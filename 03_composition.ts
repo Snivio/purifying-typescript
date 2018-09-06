@@ -1,16 +1,20 @@
 import * as R from 'ramda';
 
-() => {
-    const addSalary = (bankBalance: number): number => bankBalance + 200;
 
-    const subtractFees = (bankBalance: number): number => bankBalance - 2;
+() => {    
+    const addSalary = (currentBalance: number): number => currentBalance + 200;
+
+    const subtractFees = (currentBalance: number): number => currentBalance - 2;
     
-    const payBills = (bankBalance: number): number => bankBalance - 50;
+    const subtractBills = (currentBalance: number): number => currentBalance - 50;
     
-    const updateBankBalanceComposed = R.pipe(
+    R.pipe(
         addSalary,
         subtractFees
     );
     
-    const updated: number = updateBankBalanceComposed(500);
+    R.compose(
+        addSalary,
+        subtractFees
+    );
 };

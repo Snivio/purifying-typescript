@@ -14,9 +14,11 @@
         }
     ];
 
-    // Looping
+    ///////////////////////////////////////////////////////////////
+    // Looping - nesting hell, difficult to follow what's going on
+    ///////////////////////////////////////////////////////////////
 
-    const getCoffeeLoversLooped = (customers: Array<Customer>): Array<string> => {
+    const getCoffeeDrinkersByLooping = (customers: Array<Customer>): Array<string> => {
         const coffeeDrinkerNames = [];
         for (let customer of customers) {
             if (customer.beverages) {
@@ -30,16 +32,18 @@
         return coffeeDrinkerNames;
     };
 
-    const loopResult: Array<string> = getCoffeeLoversLooped(customers);
+    getCoffeeDrinkersByLooping(customers);
 
-    // Recursion
+    ///////////////////////////////////////////////////////////////
+    // Recursion - small, reusable functions, easier to read and test
+    ///////////////////////////////////////////////////////////////
 
     const getCustomerName = (customer: Customer): string => customer.name;
 
     const isCoffeeDrinker = (customer: Customer): boolean => customer.beverages.includes('coffee');
 
-    const getCoffeeLoversRecursion = (customers: Array<Customer>): Array<string> => 
+    const getCoffeeDrinkersByRecursion = (customers: Array<Customer>): Array<string> => 
         customers.filter(isCoffeeDrinker).map(getCustomerName);
 
-    const recursionResult: Array<string> = getCoffeeLoversRecursion(customers);
+    getCoffeeDrinkersByRecursion(customers);
 };

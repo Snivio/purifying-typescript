@@ -1,7 +1,10 @@
-import { Maybe, maybe } from 'tsmonad';
+import { maybe } from 'tsmonad';
 
 () => {
+    ///////////////////////////////////////////////////////////////
     // Normal
+    ///////////////////////////////////////////////////////////////
+
     const canWithdrawMoney = (balance: number): boolean => {
         let canWithdraw = false;
         if (balance) {
@@ -10,9 +13,12 @@ import { Maybe, maybe } from 'tsmonad';
         return canWithdraw;
     };
 
-    const updated = canWithdrawMoney(null);
+    canWithdrawMoney(null);
 
+    ///////////////////////////////////////////////////////////////
     // Pattern matching
+    ///////////////////////////////////////////////////////////////
+
     const canWithdrawMoneyMaybe = (balance: number): boolean => {
         return maybe(balance).caseOf({
             just: value => value > 0,
@@ -20,5 +26,5 @@ import { Maybe, maybe } from 'tsmonad';
         });
     };
 
-    const updatedMaybe = canWithdrawMoneyMaybe(null);
+    canWithdrawMoneyMaybe(null);
 };
