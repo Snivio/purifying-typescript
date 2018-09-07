@@ -1,7 +1,5 @@
 () => {
-
     // Using TS inbuilt immutability
-    // Keep in mind, provides compile time but not run time immutability
     // Some libraries - prelude.ts, immutable.js etc - offer some nice higher level abstractions
 
     type Customer = Readonly<{
@@ -20,5 +18,9 @@
     ];
 
     customers[0].name = 'Bob';
-    customers.push();
+
+    customers.push({
+        name: 'Bob',
+        beverages: ['chai']
+    });
 };

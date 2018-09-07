@@ -15,7 +15,7 @@
     ];
 
     ///////////////////////////////////////////////////////////////
-    // Looping - nesting hell, difficult to follow what's going on
+    // Looping - nesting hell, difficult to follow what's going on, cyclic complexity
     ///////////////////////////////////////////////////////////////
 
     const getCoffeeDrinkersByLooping = (customers: Array<Customer>): Array<string> => {
@@ -43,7 +43,9 @@
     const isCoffeeDrinker = (customer: Customer): boolean => customer.beverages.includes('coffee');
 
     const getCoffeeDrinkersByRecursion = (customers: Array<Customer>): Array<string> => 
-        customers.filter(isCoffeeDrinker).map(getCustomerName);
+        customers
+            .filter(isCoffeeDrinker)
+            .map(getCustomerName);
 
     getCoffeeDrinkersByRecursion(customers);
 };

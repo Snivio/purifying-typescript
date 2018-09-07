@@ -1,9 +1,9 @@
 () => {
     ///////////////////////////////////////////////////////////////
-    // JavaScript
+    // Untyped
     ///////////////////////////////////////////////////////////////
     
-    const orderCoffeeJavaScript = (name, wouldLikeSugar) => {
+    const orderCoffeeUntyped = (name, wouldLikeSugar) => {
         if (wouldLikeSugar) {
             return `Your ${name} with sugar is coming right up!`;
         } else {
@@ -11,15 +11,15 @@
         }
     };
 
-    orderCoffeeJavaScript("Cappucino", true);
+    orderCoffeeUntyped("Cappucino", true);
 
-    // orderCoffeeJavaScript(123, null);
+    // orderCoffeeUntyped(123, null);
 
     ///////////////////////////////////////////////////////////////
-    // TypeScript
+    // Typed
     ///////////////////////////////////////////////////////////////
 
-    const orderCoffeeTypeScript = (name: string, wouldLikeSugar: boolean): string  => {
+    const orderCoffeeTyped = (name: string, wouldLikeSugar: boolean): string  => {
         if (wouldLikeSugar) {
             return `Your ${name} with sugar is coming right up!`;
         } else {
@@ -27,7 +27,7 @@
         }
     };
 
-    orderCoffeeTypeScript("Cappucino", true);
+    orderCoffeeTyped("Cappucino", true);
 
-    // orderCoffeeTypeScript(1, true);
+    // orderCoffeeTyped(123, true);
 };
